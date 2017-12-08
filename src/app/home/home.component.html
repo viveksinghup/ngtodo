@@ -1,0 +1,38 @@
+<!-- <div *ngIf = "appState == 'default'">
+	<p>Add task</p>
+	<form (submit)="addTodo()">
+	<input type="text" [(ngModel)]="task" name="task" autocomplete="off">
+</form>
+</div>
+<div *ngIf = "appState == 'edit'">
+	<p>Edit task</p>
+	<form (submit)="updateTodo()">
+	<input type="text" [(ngModel)]="task" name="task" autocomplete="off">
+</form>
+</div>
+<ul>
+	<li *ngFor="let todo of todos">
+		<span>{{todo.task}}</span><button (click) = "deleteTodo(todo.task)">X</button><button (click) = "editTodo(todo)">i</button>
+	</li>
+</ul> -->
+
+<div id="tasker" class="tasker">
+	<div id="error" class="error" style="display: none;">Please enter a task</div>
+	<div *ngIf = "appState == 'default'" id="tasker-header" class="tasker-header">
+		<form (submit)="addTodo()">
+			<input type="text" id="input-task" placeholder="Enter a task" [(ngModel)]="task" name="task" autocomplete="off">
+			<button id="add-task-btn"><i class="fa fa-fw fa-plus"></i></button>
+		</form>
+	</div>
+	<div *ngIf = "appState == 'edit'" id="tasker-header" class="tasker-header">
+		<form (submit)="updateTodo()">
+			<input type="text" id="input-task" [(ngModel)]="task" name="task" autocomplete="off" placeholder="Enter a task">
+			<button id="add-task-btn"><i class="fa fa-fw fa-plus"></i></button>
+		</form>
+	</div>
+	<div class="tasker-body">
+		<ul id="tasks">
+			<li class="task" *ngFor="let todo of todos">{{todo.task}}<button><i class="fa fa-edit" (click) = "editTodo(todo)"></i>&nbsp;<i class="fa fa-trash" (click) = "deleteTodo(todo.task)"></i></button></li>
+		</ul>
+	</div>
+</div>
